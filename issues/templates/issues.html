@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row row-flex">
+
+    {% for issue in issues %}
+
+    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
+        <div class="panel-body">
+
+            <h3>{{ issue.title }}</h3>
+            <p>{{ issue.type }}</p>
+            <p class="issue-description">{{ issue.description }}</p>
+            <div class="issue" style="background-image: url('{{ MEDIA_URL }}{{ issue.image }}')"></div>
+            <p>{{ issue.price }}</p>
+            <p>{{ issue.date_created }}</p>
+            <p>{{ issue.completed }}</p>
+            <p>{{ issue.complated_date }}</p>
+            <p>{{ issue.status }}</p>
+            <p>{{ issue.upvotes }}</p>
+
+            {% if 'issue.type' == "Feature" %}
+            <form method="post" action="{% url 'add_to_cart' product.id %}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="submit">Add</button>
+                    </span>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
