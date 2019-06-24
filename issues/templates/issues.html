@@ -14,12 +14,12 @@
             <p>{{ issue.price }}</p>
             <p>{{ issue.date_created }}</p>
             <p>{{ issue.completed }}</p>
-            <p>{{ issue.complated_date }}</p>
+            <p>{{ issue.completed_date }}</p>
             <p>{{ issue.status }}</p>
             <p>{{ issue.upvotes }}</p>
 
-            {% if 'issue.type' == "Feature" %}
-            <form method="post" action="{% url 'add_to_cart' product.id %}">
+            
+            <form method="post" action="{% url 'add_to_cart' issue.id %}">
                 {% csrf_token %}
                 <div class="input-group">
                     <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
@@ -28,7 +28,7 @@
                     </span>
                 </div>
             </form>
-            {% endif %}
+         
         </div>
     </div>
     {% endfor %}
