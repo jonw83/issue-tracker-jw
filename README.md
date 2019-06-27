@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jonw83/issue-tracker-jw.svg?branch=master)](https://travis-ci.org/jonw83/issue-tracker-jw)
+
 
      ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
     '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
