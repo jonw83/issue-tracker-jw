@@ -41,8 +41,8 @@
                     <li>
                         <a href="{% url 'view_cart' %}">
                             <i class="fas fa-shopping-cart"></i>Cart
-                            {% if product_count > 0 %}
-                            <label class="badge badge-warning">{{ product_count }}</label>
+                            {% if issue_count > 0 %}
+                            <label class="badge badge-warning">{{ issue_count }}</label>
                             {% endif %}
                         </a>
                     </li>
@@ -58,9 +58,15 @@
     </div>
     {% endif %}
     <div class="container">
+        <div class="display">
+            <form action="{% url 'search' %}" method="get">
+                <input type="text" name="q">
+                <button type="search">Search</button>
+            </form>
+        </div>
         {% block content %} {% endblock %}
     </div>
-    <footer>
+    <footer class = "page footer">
         <div class="container">
             <p>Jonathan Walters for Code Institute</p>
         </div>
