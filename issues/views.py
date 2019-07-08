@@ -6,6 +6,9 @@ from .models import Issue
 def all_issues(request):
     issues = Issue.objects.all()
     return render(request, "issues.html", {"issues": issues})
+
+def add_issue(request):
+    return render(request, "addissue.html")
     
     
     
