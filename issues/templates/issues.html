@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block page_title %} <title>Issues</title> {% endblock page_title%} 
+{% block content %}
 
 <div class="row row-flex">
 
@@ -8,16 +10,19 @@
         <div class="panel-body">
 
             <h3>{{ issue.title }}</h3>
-            <p>{{ issue.type }}</p>
-            <p class="issue-description">{{ issue.description }}</p>
-            <div class="issue" style="background-image: url('{{ MEDIA_URL }}{{ issue.image }}')"></div>
-            <p>{{ issue.price }}</p>
-            <p>{{ issue.date_created }}</p>
-            <p>{{ issue.completed }}</p>
-            <p>{{ issue.completed_date }}</p>
-            <p>{{ issue.status }}</p>
-            <p>{{ issue.upvotes }}</p>
-
+            <p><strong>Type: </strong>{{ issue.type }}</p>
+            <p class="issue-description"><strong>Description: </strong>{{ issue.description }}</p>
+            <p><strong>Requested By: </strong>{{ issue.requested_by }}</p>
+            <p><strong>Date Created: </strong>{{ issue.date_created }}</p>
+            <p><strong>Status: </strong>{{ issue.status }}</p>
+            <p><strong>Date Completed: </strong>{{ issue.completed_date }}</p>
+            <p><strong>Upvotes: </strong>{{ issue.upvotes }}</p>
+            
+            {% if issue.type == "Feature" %}
+            
+            <p><strong>Price: </strong>£{{ issue.price }}</p>
+            
+            {% endif %}
             
             <form method="post" action="{% url 'add_to_cart' issue.id %}">
                 {% csrf_token %}
