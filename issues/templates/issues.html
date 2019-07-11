@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% block page_title %}
+<title>Issues</title> {% endblock page_title%} {% block content %}
+
+<div class="container">
+
+    <div>
+        <h1>Issue Tracker</h1>
+    </div>
+
+    <div>
+        <p>Welcome to the Issue Tracker. Here you can report and track any bugs you are currently experiencing within your application or request a specific feature you would like to add.</p>
+    </div>
+
+    <div>
+        <p>We will try to resolve your Bug issues within 3 working days and this will be free of charge. If you would like to add a feature to your application will be aim to complete your request within 4 working weeks. Features are priced at £99.99 each.</p>
+    </div>
+
+    <div>
+        <p>To add a bug issue or request a feature, first please register or login. Once registered or logged in click the Add Issue link in the navbar or alternatively click <a href="{% url 'addissue' %}">here</a>.</p>
+    </div>
+
+    <div>
+        <p>Below are the list of issues that have been submitted to date. Here you can check the detail and status of each issue</p>
+    </div>
+
+    <div class="row row-flex">
+
+        {% for issue in issues %}
+
+        <div class="col-xs-12 col-sm-12 col-md-12 display panel panel-default">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse1"><h3>{{ issue.title }}</h3></a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <p><strong>Type: </strong>{{ issue.type }}</p>
+                        <p class="issue-description"><strong>Description: </strong>{{ issue.description }}</p>
+                        <p><strong>Requested By: </strong>{{ issue.requested_by }}</p>
+                        <p><strong>Date Created: </strong>{{ issue.date_created }}</p>
+                        <p><strong>Status: </strong>{{ issue.status }}</p>
+                        <p><strong>Date Completed: </strong>{{ issue.completed_date }}</p>
+                        <p><strong>Upvotes: </strong>{{ issue.upvotes }}</p>
+
+                        <!--<form method="post" action="{% url 'add_to_cart' issue.id %}">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success" type="submit">Add</button>
+                                </span>
+                            </div>
+                            </form>!-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
