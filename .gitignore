@@ -1,5 +1,5 @@
 *.sqlite3
 env.py
 __pycache__
-.c9/
-issues/migrations/
+.c9
+migrations
