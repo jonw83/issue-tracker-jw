@@ -16,7 +16,7 @@ STATUS =  [
 # Create your models here.
 class Issue(models.Model):
     title = models.CharField(max_length=254, blank=False, default='')
-    type = models.CharField(max_length=10, choices=TYPE, blank=False)
+    issue_type = models.CharField(max_length=10, choices=TYPE, blank=False)
     description = models.TextField(blank=False)
     requested_by = models.ForeignKey(User)
     date_created = models.DateTimeField(blank=True, null=True, default=timezone.now)
