@@ -21,18 +21,22 @@ def add_issue(request):
         if issue_form.is_valid():
             issue = issue_form.save(commit=False)
             issue.date = timezone.now()
-            issue.save()
-        
+            issue.requested_by = request.user
+            
+            if issue.issue_type == 'Feature':
+                print('I am here')
+                issue.price = 99.99
+                issue.save()
+                return redirect(reverse('view_cart'))
+                
+            else:
+                print('I am here')
+                issue.price = 00.00
+                print(issue.price)
+                issue.save()
             return redirect(reverse('issues'))
-        
-        else:
-            print(issue_form.errors)
-            messages.error(request, "Please complete all fields")
-
+            
     else:
         issue_form = IssueForm()
-    
-    return render(request, "addissue.html", {"issue_form": issue_form})
-
-    
-    
+        
+    return render(request, 'addissue.html', {'issue_form': issue_form})
