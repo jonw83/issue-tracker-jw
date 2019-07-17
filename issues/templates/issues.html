@@ -24,18 +24,16 @@
     </div>
 
     <div class="row row-flex">
-
-        {% for issue in issues %}
-
         <div class="col-xs-12 col-sm-12 col-md-12 display panel panel-default">
             <div class="panel-group">
                 <div class="panel panel-default">
+                    {% for issue in issues %}
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse1"><h3>{{ issue.title }}</h3></a>
-                        </h4>
+                        <div class="panel-title">
+                            <a data-toggle="collapse" data-target="#collapse-{{ issue.pk }}"><h3>{{ issue.title }}</h3></a>
+                        </div>
                     </div>
-                    <div id="collapse1" class="panel-collapse collapse">
+                    <div id="collapse-{{ issue.pk }}" class="panel-collapse collapse">
                         <p><strong>Type: </strong>{{ issue.type }}</p>
                         <p class="issue-description"><strong>Description: </strong>{{ issue.description }}</p>
                         <p><strong>Requested By: </strong>{{ issue.requested_by }}</p>
@@ -43,21 +41,11 @@
                         <p><strong>Status: </strong>{{ issue.status }}</p>
                         <p><strong>Date Completed: </strong>{{ issue.completed_date }}</p>
                         <p><strong>Upvotes: </strong>{{ issue.upvotes }}</p>
-
-                        <!--<form method="post" action="{% url 'add_to_cart' issue.id %}">
-                            {% csrf_token %}
-                            <div class="input-group">
-                                <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-success" type="submit">Add</button>
-                                </span>
-                            </div>
-                            </form>!-->
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock %}
