@@ -24,15 +24,12 @@ def add_issue(request):
             issue.requested_by = request.user
             
             if issue.issue_type == 'Feature':
-                print('I am here')
                 issue.price = 99.99
                 issue.save()
                 return redirect(reverse('view_cart'))
                 
             else:
-                print('I am here')
                 issue.price = 00.00
-                print(issue.price)
                 issue.save()
             return redirect(reverse('issues'))
             
