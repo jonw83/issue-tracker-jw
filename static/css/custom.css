@@ -60,7 +60,3 @@ caption p {
     height: 100%;
     border: 1px solid #ddd;
 }
-
-.issue-description {
-    min-height: 40px;
-}
