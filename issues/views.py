@@ -10,7 +10,7 @@ from .forms import IssueForm
 
 @login_required()
 def all_issues(request):
-    issues = Issue.objects.all()
+    issues = Issue.objects.all().order_by('-date_created')
     return render(request, "issues.html", {"issues": issues})
 
 def add_issue(request):
