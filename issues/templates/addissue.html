@@ -3,35 +3,20 @@
 
 <div class="container">
     <form role="form" method="POST" id="add-issue-form" action="{% url 'addissue' %}">
-
         {% csrf_token %}
-
+        
         <div class="form-group col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 display panel panel-default">
             <h3>Add Your Issue Here!</h3>
             <br> {{ issue_form | as_bootstrap }}
         </div>
-
+        
         <div class="form-group col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-            <input class=" btn btn-primary" id="submit_btn" name="submit" type="submit" value="Submit">
+            <div class="input-group-btn">
+                <input class=" btn btn-primary" id="submit_btn" name="submit" type="submit" value="Submit">
+            </div>
         </div>
+        
     </form>
 </div>
-
-<!--{% if issue.type == "Feature" %}
-
-        <p><strong>Price: </strong>£{{ issue.price }}</p>
-
-        <form method="post" action="{% url 'add_to_cart' issue.id %}">
-            {% csrf_token %}
-            <div class="input-group">
-                <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-                <span class="input-group-btn">
-                    <button class="btn btn-success" type="submit">Add</button>
-                </span>
-            </div>
-        </form>
-
-        {% endif %}!-->
-
 
 {% endblock %}
