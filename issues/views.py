@@ -13,7 +13,6 @@ def all_issues(request):
     issues = Issue.objects.all()
     return render(request, "issues.html", {"issues": issues})
 
-@login_required()
 def add_issue(request):
     if request.method == 'POST':
         issue_form = IssueForm(request.POST)
@@ -26,7 +25,12 @@ def add_issue(request):
             if issue.issue_type == 'Feature':
                 issue.price = 99.99
                 issue.save()
-                return redirect(reverse('view_cart'))
+                
+                cart = request.session.get('cart', {})
+                issue_id = issue.pk
+            
+                cart[issue_id] = cart.get(issue_id, 1)
+                request.session['cart'] = cart
                 
             else:
                 issue.price = 00.00
