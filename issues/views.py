@@ -41,3 +41,11 @@ def add_issue(request):
         issue_form = IssueForm()
         
     return render(request, 'addissue.html', {'issue_form': issue_form})
+    
+@login_required()
+def upvote(request, pk):
+    issue = Issue.objects.get(pk=pk)
+    issue.upvotes += 1
+    issue.save()
+    messages.success(request, 'Thanks for the upvote!')
+    return redirect('issues')
