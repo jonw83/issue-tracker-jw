@@ -40,7 +40,7 @@
                         <p><strong>Date Created: </strong>{{ issue.date_created }}</p>
                         <p><strong>Status: </strong>{{ issue.status }}</p>
                         <p><strong>Date Completed: </strong>{{ issue.completed_date }}</p>
-                        <p><strong>Upvotes: </strong>{{ issue.upvotes }}</p>
+                        <p><strong>Upvotes: </strong>{{ issue.upvotes }} <a href="{% url 'upvote' issue.id %}"><i class="far fa-thumbs-up"></i></a></p>
                     </div>
                     {% endfor %}
                 </div>
