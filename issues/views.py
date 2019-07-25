@@ -31,6 +31,8 @@ def add_issue(request):
             
                 cart[issue_id] = cart.get(issue_id, 1)
                 request.session['cart'] = cart
+            
+                return redirect(reverse('view_cart'))
                 
             else:
                 issue.price = 00.00
