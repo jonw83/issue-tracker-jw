@@ -33,7 +33,7 @@
                             <a data-toggle="collapse" data-target="#collapse-{{ issue.pk }}"><h3>{{ issue.title }}</h3></a>
                         </div>
                     </div>
-                    <div id="collapse-{{ issue.pk }}" class="panel-collapse collapse">
+                    <div id="collapse-{{ issue.pk }}" class="panel-collapse collapse issue-padding">
                         <p><strong>Issue Type: </strong>{{ issue.issue_type }}</p>
                         <p><strong>Description: </strong>{{ issue.description }}</p>
                         <p><strong>Requested By: </strong>{{ issue.requested_by }}</p>
@@ -41,6 +41,7 @@
                         <p><strong>Status: </strong>{{ issue.status }}</p>
                         <p><strong>Date Completed: </strong>{{ issue.completed_date }}</p>
                         <p><strong>Upvotes: </strong>{{ issue.upvotes }} <a href="{% url 'upvote' issue.id %}"><i class="far fa-thumbs-up"></i></a></p>
+                        <a class="btn btn-primary" href="{% url 'editissue' issue.pk %}"><i class="fas fa-edit"></i>Edit</a>
                     </div>
                     {% endfor %}
                 </div>
