@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block page_title %} {% load static from staticfiles %} {% load bootstrap_tags %}
+<title>Edit Issue</title> {% endblock page_title %} {% block content %}
+
+<div class="container">
+    <form role="form" method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 display panel panel-default">
+            <h3>Edit Issue</h3>
+            
+            {{ edit_issue_form | as_bootstrap }}
+            
+        </div>
+        
+        <div class="form-group col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+            <div class="input-group-btn">
+                <input class=" btn btn-primary" id="submit_btn" name="submit" type="submit" value="Submit">
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+{% endblock %}
