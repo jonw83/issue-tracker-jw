@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.utils import timezone
 from .models import Issue
-from .forms import IssueForm
+from .forms import IssueForm, EditIssueForm
 
 # Create your views here.
 
@@ -43,7 +43,19 @@ def add_issue(request):
         issue_form = IssueForm()
         
     return render(request, 'addissue.html', {'issue_form': issue_form})
-    
+
+@login_required()
+def edit_issue(request, pk):
+    issue = get_object_or_404(Issue, pk=pk) if pk else None
+    if request.method == 'POST':
+        edit_issue_form = EditIssueForm(request.POST, request.FILES, instance=issue)            
+        if edit_issue_form.is_valid():
+            issue=edit_issue_form.save()
+            return redirect(reverse('issues'))
+    else:
+        edit_issue_form = EditIssueForm(instance=issue)
+        return render(request, 'editissue.html', {'edit_issue_form': edit_issue_form})
+        
 @login_required()
 def upvote(request, pk):
     issue = Issue.objects.get(pk=pk)
