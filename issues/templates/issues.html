@@ -41,7 +41,9 @@
                         <p><strong>Status: </strong>{{ issue.status }}</p>
                         <p><strong>Date Completed: </strong>{{ issue.completed_date }}</p>
                         <p><strong>Upvotes: </strong>{{ issue.upvotes }} <a href="{% url 'upvote' issue.id %}"><i class="far fa-thumbs-up"></i></a></p>
-                        <a class="btn btn-primary" href="{% url 'editissue' issue.pk %}"><i class="fas fa-edit"></i>Edit</a>
+                        {% if request.user.is_superuser %}
+                        <a class="btn btn-primary" href="{% url 'editissue' issue.id %}"><i class="fas fa-edit"></i>Edit</a>
+                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
