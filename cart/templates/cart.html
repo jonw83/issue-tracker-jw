@@ -13,7 +13,7 @@
             <h3>{{ item.issue.title }}</h3>
             <p><strong>Description: </strong>{{ item.issue.description }}</p>
             <p><strong>Requested By: </strong>{{ item.issue.requested_by }}</p>
-            <p><strong>Price: </strong>{{ item.issue.price }}</p>
+            <p><strong>Price: </strong>£{{ item.issue.price }}</p>
             <p>
                 <form class="form-inline" method="post" action="{% url 'remove_item_from_cart' item.id %}">
                     {% csrf_token %}
