@@ -11,8 +11,9 @@ class UserLoginForm(forms.Form):
     
 class UserRegistrationForm(UserCreationForm):
     """Form to be used to register users"""
-    password1 = forms.CharField(widget = forms.PasswordInput)
-    password2 = forms.CharField(label = "Password Configuration",
+    password1 = forms.CharField(label = "Password", 
+                                widget = forms.PasswordInput)
+    password2 = forms.CharField(label = "Re-enter password",
                                 widget = forms.PasswordInput)
     
     class Meta:
