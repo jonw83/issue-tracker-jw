@@ -63,11 +63,3 @@ caption p {
     height: 100%;
     border: 1px solid #ddd;
 }
-
-.issue-padding {
-    padding: 20px;
-}
-
-h2 .cart-total{
-    color: black;
-}
