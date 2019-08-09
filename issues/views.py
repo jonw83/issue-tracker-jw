@@ -10,10 +10,13 @@ from .forms import IssueForm, EditIssueForm
 
 @login_required()
 def all_issues(request):
+    """Displays all issue requests"""
     issues = Issue.objects.all().order_by('-date_created')
     return render(request, "issues.html", {"issues": issues})
-
+    
+@login_required()
 def add_issue(request):
+    """Add issue to issue tracker"""
     if request.method == 'POST':
         issue_form = IssueForm(request.POST)
         
@@ -46,6 +49,7 @@ def add_issue(request):
 
 @login_required()
 def edit_issue(request, pk):
+    """Allow superuser to edit issue"""
     issue = get_object_or_404(Issue, pk=pk) if pk else None
     if request.method == 'POST':
         edit_issue_form = EditIssueForm(request.POST, request.FILES, instance=issue)            
@@ -58,6 +62,7 @@ def edit_issue(request, pk):
         
 @login_required()
 def upvote(request, pk):
+    """Upvote an issue"""
     issue = Issue.objects.get(pk=pk)
     issue.upvotes += 1
     issue.save()
