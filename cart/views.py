@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
 
 # Create your views here.
 def view_cart(request):
     """A View that renders the cart contents page"""
     return render(request, "cart.html")
 
-
 def add_to_cart(request, id):
-    """Add a quantity of the specified issue to the cart"""
+    """Add Feature issue to the cart"""
     quantity = int(request.POST.get('quantity'))
 
     cart = request.session.get('cart', {})
@@ -20,6 +20,7 @@ def add_to_cart(request, id):
     return redirect(reverse('index'))
 
 def remove_item_from_cart(request, id):
+    """Remove Feature issue to the cart"""
     cart = request.session.get('cart', {})
     cart.pop(id)
     request.session['cart'] = cart
