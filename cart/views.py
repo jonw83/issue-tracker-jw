@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, reverse
-from django.contrib import messages
 
 # Create your views here.
 def view_cart(request):
