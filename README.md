@@ -69,7 +69,7 @@ All other testing has been performed manually. This includes the following manua
 ### Navbar
 
 1. Navbar links have been created for ease of navigation. All navigation links has been manually tested and correct navigation has been confirmed.
-1. The search feature is positio within the navbar. Manual testing has confirmed that the search feature works and users can search for an issue title with success.
+1. The search feature is positioned within the navbar. Manual testing has confirmed that the search feature works and users can search for an issue title with success.
 
 ### Index / Issues Page
 
@@ -85,7 +85,7 @@ All other testing has been performed manually. This includes the following manua
 
 ### Add Issue Page
 
-1. The user should be able to enter details of the new issue request into the fields provided. The user should be able to select to either add a Bug or a Feature from the dropdown provided. Manual testing confirms this.
+1. The user should be able to enter details of the new issue request into the fields provided. The user should be able to select either add a Bug or a Feature from the dropdown provided. Manual testing confirms this.
 1. If the user selects a Bug issue, once they click submit they should be redirected to the index / issue page where the bug should be visible in the list of all bugs. Manual testing confirms this.
 1. If the user selects a Feature issue, once they click submit they should be redirected to the cart page. Manual testing confirms this. 
 
